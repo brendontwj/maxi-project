@@ -157,9 +157,10 @@ public class UserController {
 
     @DeleteMapping(path = "/delete/{username}/favourites", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<String> deleteShow(
-        @RequestBody MultiValueMap<String, String> body
+        @PathVariable String username,
+        @RequestBody Show show
     ) {
-        Optional<FavouriteList> fListOpt = userService.getFavouriteList(body.getFirst("username"));
+        Optional<FavouriteList> fListOpt = userService.getFavouriteList(username);
         if (!fListOpt.isPresent()) {
             JsonObject response = Json.createObjectBuilder()
                     .add("message", "No favourite list for that user found")
@@ -168,15 +169,15 @@ public class UserController {
         }
         FavouriteList fList = fListOpt.get();
         String listId = fList.getId();
-        Show s = new Show();
-        s.setId(Integer.parseInt(body.getFirst("mediaId")));
-        s.setMedia_type(body.getFirst("mediaType"));
-        s.setName(body.getFirst("name"));
-        s.setPoster_path(body.getFirst("poster_path"));
-        s.setRelease_date(body.getFirst("release_date"));
-        s.setVote_average(Double.parseDouble(body.getFirst("vote_average")));
+        // Show s = new Show();
+        // s.setId(Integer.parseInt(body.getFirst("mediaId")));
+        // s.setMedia_type(body.getFirst("mediaType"));
+        // s.setName(body.getFirst("name"));
+        // s.setPoster_path(body.getFirst("poster_path"));
+        // s.setRelease_date(body.getFirst("release_date"));
+        // s.setVote_average(Double.parseDouble(body.getFirst("vote_average")));
 
-        boolean isDeleted = userService.deleteShow(s, listId);
+        boolean isDeleted = userService.deleteShow(show, listId);
         if (isDeleted) {
             return ResponseEntity.ok().body(
                 Json.createObjectBuilder()
