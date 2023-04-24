@@ -1,0 +1,41 @@
+<div>
+    <form [formGroup]="registerForm" (ngSubmit)="registerUser()">
+      <mat-card class="register-form">
+        <mat-card-header>
+          <mat-card-title>Create new account</mat-card-title>
+        </mat-card-header>
+        <br>
+        <mat-card-content>
+          <p>
+            <mat-form-field appearance="outline" hintLabel="Min 3 characters">
+              <mat-label>Username</mat-label>
+              <input matInput #username placeholder="E.g. btwj" formControlName="username">
+              <mat-hint align="end">{{username.value.length}}</mat-hint>
+            </mat-form-field>
+          </p>
+          <p>
+            <mat-form-field appearance="outline">
+              <mat-label>Password</mat-label>
+              <input matInput type="password" formControlName="password">
+              <mat-hint>Min 5 characters</mat-hint>
+            </mat-form-field>
+          </p>
+          <p>
+            <mat-form-field appearance="outline">
+              <mat-label>Email</mat-label>
+              <input matInput placeholder="user@gmail.com" formControlName="email">
+            </mat-form-field>
+          </p>
+        </mat-card-content>
+        <p *ngIf="message" class="error">
+          {{message}}
+        </p>
+        <p *ngIf="error" class="error">
+          {{error}}
+        </p>
+        <mat-card-actions>
+          <button mat-raised-button [disabled]="registerForm.invalid" id="registerButton">Create Account</button>
+        </mat-card-actions>
+      </mat-card>
+    </form>
+  </div>

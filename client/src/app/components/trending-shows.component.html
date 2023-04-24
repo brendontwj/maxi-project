@@ -1,0 +1,23 @@
+<div class="searchbar">
+    <form [formGroup]="form" (ngSubmit)="submitSearch()">
+        <mat-form-field appearance="fill">
+            <mat-label>Search for Tv show or movie</mat-label>
+            <input matInput formControlName="query">
+        </mat-form-field>
+        <button mat-raised-button [disabled]="form.invalid">Search</button>
+    </form>
+</div>
+<h1>Trending Shows</h1>
+<div>
+    <mat-card class="trending-shows"  [routerLink]="[s.media_type, s.id]" *ngFor="let s of trendingShows">
+        <img mat-card-image src="{{s.poster_path}}">
+        <mat-card-header>
+            <button mat-fab extended color="primary">
+                <mat-icon>favorite</mat-icon>
+                {{ s.vote_average }}
+            </button>
+            <mat-card-title>{{ s.name }}</mat-card-title>
+            <mat-card-subtitle>{{ s.media_type | titlecase }} | {{ s.release_date }}</mat-card-subtitle>
+        </mat-card-header>
+    </mat-card>      
+</div>

@@ -1,0 +1,14 @@
+<mat-toolbar color="primary" class="toolbar">
+    <button mat-raised-button routerLink="/">TMDB App</button>
+    <span class="example-spacer"></span>
+    <div *ngIf="!isLoggedIn">
+        <button mat-flat-button  (click)="login()">Sign in</button>
+        <button mat-flat-button  routerLink="/register">Sign up</button>
+    </div>
+    <div *ngIf="isLoggedIn">
+        <h1 [routerLink]="[username, 'favourites']">{{username}}</h1>
+        <button mat-flat-button (click)="logout()">Sign Out</button>
+    </div>
+</mat-toolbar>
+<br><br><br><br>
+<router-outlet></router-outlet>

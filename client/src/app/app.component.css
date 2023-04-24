@@ -1,0 +1,22 @@
+body {
+    background-color: blueviolet !important;
+}
+
+.example-spacer {
+    flex: 1 1 auto;
+}
+
+button {
+    margin: 1vw;
+}
+
+h1 {
+    margin: 1vw;
+    display: inline;
+}
+
+.toolbar {
+    position: fixed;
+    top: 0;
+    z-index: 100;
+}

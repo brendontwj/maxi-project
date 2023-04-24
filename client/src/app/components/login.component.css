@@ -1,0 +1,15 @@
+button {
+    margin-left: 1vw;
+}
+
+.error {
+    width: 45vw;
+    color: white;
+    background-color: red;
+}
+
+.register-form {
+    width: 45vw;
+    margin: auto;
+    display: flex;
+}

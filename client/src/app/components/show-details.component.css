@@ -1,0 +1,50 @@
+mat-card-header { 
+    justify-content: space-between;
+}
+
+.review {
+    justify-content: space-between;
+}
+
+.review mat-card-title {
+    margin-top: 1vw;
+}
+
+#backToSearch {
+    margin: 3vw;
+}
+
+.trending-shows {
+    flex: 1 1 auto;
+    width: 45vw;
+    margin: auto;
+}
+
+.comment-form {
+    width: 45vw;
+    margin: auto;
+    display: flex;
+}
+
+#comment {
+    width: 43vw;
+}
+
+.error {
+    padding-left: 1vw;
+    width: 45vw;
+    color: white;
+    background-color: red;
+}
+
+mat-card-actions button {
+    margin: 1vw;
+}
+
+mat-card-actions {
+    justify-content: space-between;
+}
+
+.favouriteButton {
+    align-self: center;
+}
