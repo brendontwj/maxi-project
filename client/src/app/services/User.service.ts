@@ -23,7 +23,7 @@ export class UserService {
 
     return firstValueFrom(
       this.httpClient.post<any>(
-        'http://localhost:8080/api/register', fd
+        'https://vttp-tmdb.up.railway.app/api/register', fd
       )
     )
   }
@@ -37,7 +37,7 @@ export class UserService {
 
     return firstValueFrom(
       this.httpClient.post<any>(
-        'http://localhost:8080/api/login', fd
+        'https://vttp-tmdb.up.railway.app/api/login', fd
       )
     )
   }
@@ -55,7 +55,7 @@ export class UserService {
 
     return firstValueFrom(
       this.httpClient.post<any>(
-        `http://localhost:8080/api/post/${username}/favourites`, fd
+        `https://vttp-tmdb.up.railway.app/api/post/${username}/favourites`, fd
       )
     )
   }
@@ -80,7 +80,7 @@ export class UserService {
 
     return firstValueFrom(
       this.httpClient.delete<any>(
-        `http://localhost:8080/api/delete/${username}/favourites`, options
+        `https://vttp-tmdb.up.railway.app/api/delete/${username}/favourites`, options
       )
     )
   }
@@ -88,7 +88,7 @@ export class UserService {
   getFavourites(username: string) {
     return firstValueFrom(
       this.httpClient.get<Show[]>(
-        `http://localhost:8080/api/${username}/favourites`,
+        `https://vttp-tmdb.up.railway.app/api/${username}/favourites`,
       )
     )
   }

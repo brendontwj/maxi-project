@@ -15,7 +15,7 @@ export class TmdbService {
   getTrending() {
     return lastValueFrom(
       this.httpClient.get<Show[]>(
-        'http://localhost:8080/api/trending'
+        'https://vttp-tmdb.up.railway.app/api/trending'
       )
     )
   }
@@ -23,7 +23,7 @@ export class TmdbService {
   getShowByTypeAndId(media_type: string, id: number) {
     return lastValueFrom(
       this.httpClient.get<ShowDetails>(
-        `http://localhost:8080/api/${media_type}/${id}`
+        `https://vttp-tmdb.up.railway.app/api/${media_type}/${id}`
       )
     )
   }
@@ -34,7 +34,7 @@ export class TmdbService {
 
     return lastValueFrom(
       this.httpClient.get<Show[]>(
-        `http://localhost:8080/api/search`,
+        `https://vttp-tmdb.up.railway.app/api/search`,
         {
           params: params
         }
@@ -53,7 +53,7 @@ export class TmdbService {
 
     return lastValueFrom(
       this.httpClient.post<any>(
-        'http://localhost:8080/api/post/review', fd
+        'https://vttp-tmdb.up.railway.app/api/post/review', fd
       )
     )
   }
@@ -61,7 +61,7 @@ export class TmdbService {
   getReviews(mediaType: string, mediaId: number) {
     return lastValueFrom(
       this.httpClient.get<Review[]>(
-        `http://localhost:8080/api/${mediaType}/${mediaId}/reviews`
+        `https://vttp-tmdb.up.railway.app/api/${mediaType}/${mediaId}/reviews`
       )
     )
   }
@@ -77,7 +77,7 @@ export class TmdbService {
 
     return lastValueFrom(
       this.httpClient.post<any>(
-        `http://localhost:8080/api/${review.mediaType}/${review.mediaId}/reviews`, fd
+        `https://vttp-tmdb.up.railway.app/api/${review.mediaType}/${review.mediaId}/reviews`, fd
       )
     )
   }

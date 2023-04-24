@@ -11,7 +11,7 @@ import jakarta.json.JsonArray;
 import jakarta.json.JsonObject;
 import vttp.maxiproject.server.models.Show;
 import vttp.maxiproject.server.models.ShowDetails;
-// import vttp.maxiproject.server.repositories.ShowCache;
+import vttp.maxiproject.server.repositories.ShowCache;
 import vttp.maxiproject.server.repositories.ShowDatabaseRepository;
 
 @Service
@@ -20,8 +20,8 @@ public class ShowDatabaseService {
     @Autowired
     private ShowDatabaseRepository showRepo;
 
-    // @Autowired
-    // private ShowCache showCache;
+    @Autowired
+    private ShowCache showCache;
 
     public List<Show> getTrendingShows() {
         List<Show> showList = new LinkedList<>();
@@ -55,18 +55,18 @@ public class ShowDatabaseService {
     }
 
     public Optional<JsonObject> getShowById(String media_type, Integer id) {
-        // Optional<JsonObject> result = showCache.getShowDetails(media_type, String.valueOf(id));
-        // if(result.isPresent()) {
-        //     return result;
-        // }
-        Optional<JsonObject> result = showRepo.getShowById(media_type, id);
+        Optional<JsonObject> result = showCache.getShowDetails(media_type, String.valueOf(id));
+        if(result.isPresent()) {
+            return result;
+        }
+        result = showRepo.getShowById(media_type, id);
         if(!result.isPresent())
             return Optional.empty();
 
         JsonObject json = result.get();
         ShowDetails sd = ShowDetails.createFromJson(json, media_type);
         JsonObject sdJson = sd.toJson();
-        // showCache.saveDetails(media_type, String.valueOf(id), sdJson);
+        showCache.saveDetails(media_type, String.valueOf(id), sdJson);
         return Optional.of(sdJson);
     }
 }
